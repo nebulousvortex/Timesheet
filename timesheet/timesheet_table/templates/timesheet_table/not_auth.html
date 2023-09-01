@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <div class="features">
+        <h1> Для просмотра данной страницы вам необходимо авторизоваться </h1>
+        <a href="{% url 'login' %}"><button class="btn btn-info"> Авторизация </button></a>
+        <a href="{% url 'register' %}"><button class="btn btn-info"> Регистрация </button></a>
+    </div>
+{% endblock %}
+</body>
+</html>

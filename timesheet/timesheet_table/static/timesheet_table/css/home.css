@@ -1,0 +1,117 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(150, 210, 255)
+}
+
+header {
+  background-color: var(--dividing-section);
+  color: var(--white-text);
+  padding: 2px 20px;
+  border-radius: 10px;
+  background-color: rgb(150, 210, 255)
+}
+
+ul li a:link {
+  color: rgb(0, 0, 139);
+}
+
+ul li a:visited {
+  color: rgb(0, 0, 139);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav li:first-child {
+  margin-left: 0;
+}
+
+.features {
+    display: flex;
+    flex: 1;
+}
+
+.column {
+    width: 50%;
+    padding: 0px;
+    margin-right: 0px;
+    box-sizing: border-box;
+}
+
+.alert.alert-info {
+    position: absolute;
+    top: 3%;
+    bottom: -1.8%;
+    width: 50%;
+    background-color: rgb(210, 230, 230);
+    border: 1px solid rgb(150, 210, 255);
+}
+
+.alert.alert-primary{
+    margin: 0px;
+    padding: 5px;
+    background-color: rgb(150, 210, 255);
+}
+
+.alert.alert-secondary{
+    margin: 0px;
+    padding: 5px;
+    background-color: rgb(190, 235, 255);
+}
+
+.alert.alert-secondary.current-class {
+  background-color: rgb(202, 255, 190);
+}
+
+.alert.alert-secondary.next-class {
+  background-color: rgb(255, 210, 190);
+}
+
+.round-button {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Дополнительные стили для кнопки */
+  width: 50px;
+  height: 50px;
+  background-color: #f00;
+  color: #fff;
+  /* Дополнительные стили для кнопки */
+}
+
+.time-info, .name-info, .room-info {
+    display: inline-block;
+    margin: 0px;
+}
+
+.time-info{
+    width: 10%;
+}
+
+.name-info{
+    width: 75%;
+}
+
+.room-info{
+    width: 10%;
+}
+
+.day-info{
+
+}
+
+.week-info{
+
+}

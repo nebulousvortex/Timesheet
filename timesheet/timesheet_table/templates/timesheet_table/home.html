@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
+    <link rel="stylesheet" href="{% static 'timesheet_table/css/home.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li style="margin-left: auto;">
+                    {% if request.user.is_authenticated %}
+                        {{user.username}} | <a href="{% url 'logout' %}"> Выйти </a>
+                    {% else %}
+                        <a href="{% url 'register' %}"> <i class="fa-solid fa-address-card"></i> Регистрация </a>
+                    |
+                        <a href="{% url 'login' %}"> <i class="fa-solid fa-right-to-bracket"></i> Авторизация </a></li>
+                    {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="features">
+        <button class="round-button">Кнопка</button>
+        {% if grouped_timesheet %}
+            {% for week_name, week_timesheet in grouped_timesheet.items %}
+                <div class="column">
+                    <div class="alert alert-info">
+                        <h2>{{ week_name }}</h2>
+                        {% for day_name, day_timesheet in week_timesheet.items %}
+                            <h3 class="alert alert-primary">{{ day_name }}</h3>
+                            {% for elem in day_timesheet %}
+                                {% if elem == current_class %}
+                                    <div class="alert alert-secondary current-class">
+                                        <p class="time-info">{{ elem.time }}</p>
+                                        <p class="name-info">{{elem.type}} - {{ elem.name }} - {{elem.teacher}} </p>
+                                        <p class="room-info">{{ elem.room }}</p>
+                                        <br>
+                                    </div>
+                                {% elif elem == next_class %}
+                                    <div class="alert alert-secondary next-class">
+                                        <p class="time-info">{{ elem.time }}</p>
+                                        <p class="name-info">{{elem.type}} - {{ elem.name }} - {{elem.teacher}} </p>
+                                        <p class="room-info">{{ elem.room }}</p>
+                                        <br>
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-secondary">
+                                        <p class="time-info">{{ elem.time }}</p>
+                                        <p class="name-info">{{elem.type}} - {{ elem.name }} - {{elem.teacher}} </p>
+                                        <p class="room-info">{{ elem.room }}</p>
+                                        <br>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
